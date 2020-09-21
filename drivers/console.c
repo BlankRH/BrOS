@@ -98,19 +98,19 @@ void console_write_hex(uint32_t n, real_color_t back, real_color_t fore) {
 		i >>= 4;
 		uint8_t c_num = n >> i;
 		if(c_num < 10) {
-			console_put(c_num+'0', back, fore);
+			console_putc_color(c_num+'0', back, fore);
 		} else {
-			console_put(c_num-10+'A', back, fore);
+			console_putc_color(c_num-10+'A', back, fore);
 		}
 	}
 }
 
 void console_write_dec(uint32_t n, real_color_t back, real_color_t fore) {
 	if (n < 10) {
-		console_write_color(n+'0', back, fore);
+		console_putc_color(n+'0', back, fore);
 	} else {
 		console_write_dec(n/10, back, fore);
-		console_write_color(n%10+'0', back, fore);
+		console_putc_color(n%10+'0', back, fore);
 	}
 }
 
