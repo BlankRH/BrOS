@@ -17,13 +17,17 @@ inline void memset(void *dest, uint8_t val, uint32_t len) {
 
 inline void bzero(void *dest, uint32_t len) {
     memset(dest, 0, len);
+}
 
 inline int strcmp(const char *str1, const char *str2) {
-    for ( ; len != 0; len--) {
+    while(1) {
         if (*str1 > *str2) {
             return 1;
         } else if (*str1 < *str2) {
             return -1;
+        }
+        if(*str1 == 0 || *str2 == 0) {
+            break;
         }
     }
     return 0;
@@ -57,6 +61,4 @@ int strlen(const char *src) {
     }
     
     return len;
-}
-
 }

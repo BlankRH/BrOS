@@ -95,8 +95,8 @@ void console_write_hex(uint32_t n, real_color_t back, real_color_t fore) {
 	console_write_color("0x", back, fore);
 	int i = 32;
 	while(i) {
-		i >>= 4;
-		uint8_t c_num = n >> i;
+		i -= 4;
+		uint8_t c_num = (n >> i) & 0x0F;
 		if(c_num < 10) {
 			console_putc_color(c_num+'0', back, fore);
 		} else {
