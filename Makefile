@@ -1,7 +1,7 @@
 #!Makefile
 
 C_SOURCES = $(shell find . -name "*.c")
-C_OBJECTS = $(patsubst %.c, %.o, %(C_SOURCES))
+C_OBJECTS = $(patsubst %.c, %.o, $(C_SOURCES))
 S_SOURCES = $(shell find . -name "*.s")
 S_OBJECTS = $(patsubst %.s, %.o, $(S_SOURCES))
 
@@ -14,7 +14,7 @@ ASM = nasm
 #  -nostdinc: not include c std lib
 #  -fno-bulitin: gcc do not use built-in func
 #  -fno-stack-protector: not use stack protector
-C_FLAGS = -c -Wall -m32 -ggdb -gstabs -nostdinc -fno-pic -fno-builtin -fno-stack-protector -I include
+C_FLAGS = -c -Wall -m32 -ggdb -gstabs+ -nostdinc -fno-builtin -fno-stack-protector -I include
 
 #  -T: use our script
 #  -m elf_i386: generate elf in i386 platform
@@ -22,7 +22,7 @@ C_FLAGS = -c -Wall -m32 -ggdb -gstabs -nostdinc -fno-pic -fno-builtin -fno-stack
 LD_FLAGS = -T src/kernel.ld -m elf_i386 -nostdlib
 ASM_FLAGS = -f elf -g -F stabs
 
-# 
+ 
 all: $(S_OBJECTS) $(C_OBJECTS) link update_image
 
 .c.o:
@@ -36,7 +36,7 @@ all: $(S_OBJECTS) $(C_OBJECTS) link update_image
 # link together into one ELF binary "kernel" using script 'link.ld'
 link:
 	@echo linking kernel file...
-	$(LD) $(LDFLAGS) $(S_OBJECTS) $(C_OBJECTS) -o toy_kernel
+	$(LD) $(LD_FLAGS) $(S_OBJECTS) $(C_OBJECTS) -o toy_kernel
 
 .PHONY:clean
 clean:

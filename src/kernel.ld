@@ -23,19 +23,19 @@ SECTIONS
 	.bss :
 	{
 		*(.bss)
-		.  = ALIGN(4096)
+		. = ALIGN(4096);
 	}
 
 	.stab :
 	{
 		*(.stab)
-		. = ALIGN(4096)
+		. = ALIGN(4096);
 	}
 
 	.stabstr :
 	{
 		*(.stabstr)
-		. = ALIGN(4096)
+		. = ALIGN(4096);
 	}
 
 	/DISCARD/ : { *(.comment) *(.eh_frame) }

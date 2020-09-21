@@ -28,7 +28,7 @@ dd MBOOT_CHECKSUM		; check
 
 [GLOBAL start]			; declare entrance of kernel
 [GLOBAL glb_mboot_ptr]	; declare struct multiboot *
-[EXTERN ker_entry]		; declare entrance func to c code in kernel
+[EXTERN kern_entry]		; declare entrance func to c code in kernel
 
 start:
 	cli							;
