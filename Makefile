@@ -67,7 +67,7 @@ bochs:
 
 .PHONY:debug
 debug:
-	qemu -S -s fda floppy.img -boot a &
+	qemu -S -s -fda floppy.img -boot a &
 	sleep 1
 	cgdb -x tools/gdbinit
 
