@@ -26,6 +26,8 @@ inline int strcmp(const char *str1, const char *str2) {
         } else if (*str1 < *str2) {
             return -1;
         }
+        str1++;
+        str2++;
         if(*str1 == 0 || *str2 == 0) {
             break;
         }
