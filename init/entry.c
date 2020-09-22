@@ -1,15 +1,13 @@
 #include "console.h"
+#include "debug.h"
 
 
 int kern_entry() {
 
+	init_debug();
 	console_clear();
-
-	console_write_dec(12345, rc_black, rc_green);
-
-	console_write("\nhex:\n");
-
-	console_write_hex(0x12345, rc_black, rc_blue);
+	printk_color(rc_black, rc_green, "Hello OS\n");
+	panic("test");
 
 	return 0;
 }
