@@ -9,9 +9,9 @@ struct gdt_entry_t {
     uint16_t limit_low;     // Segment Limit 15~0
     uint16_t base_low;      // Segment Base Address 15~0
     uint8_t base_middle;    // Segment Base Address 23~16
-    uint8_t base_high;      // Segment Base Address 31~24
     uint8_t access;         // Segment Existence bit, Segment Priviledge, descriptor type, descriptor child type
     uint8_t granularity;    // other sign, segment limit 19~16
+    uint8_t base_high;      // Segment Base Address 31~24
 } __attribute__((packed)) gdt_entry_t;
 
 // GDTR

@@ -40,7 +40,7 @@ link:
 
 .PHONY:clean
 clean:
-	$(RM) $(S_OBJECTS) $(C_OBJECTS) toy_kernel
+	$(RM) $(S_OBJECTS) $(C_OBJECTS) toy_kernel out
 
 .PHONY: update_image
 update_image:

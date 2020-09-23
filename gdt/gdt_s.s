@@ -6,13 +6,13 @@ gdt_flush:
     lgdt [eax]          ; load to GDTR
 
     mov ax, 0x10        ; load data segment descriptor
-;    mov ds, ax          ; update segment registers; I don't know why it crashes here
-;    mov es, ax          
-;    mov fs, ax          
-;    mov gs, ax          
-;    mov ss, ax
+    mov ds, ax          ; update segment registers; I don't know why it crashes here
+    mov es, ax          
+    mov fs, ax          
+    mov gs, ax          
+    mov ss, ax
               
-;    jmp 0x08:.flush     ; 0x08 is segment descriptor to our code
+    jmp 0x08:.flush     ; 0x08 is segment descriptor to our code
             ; to clear pipeline and serialize cpu
             ; force cpu to update
     ret
