@@ -15,6 +15,7 @@ extern void idt_flush(uint32_t);
 
 void init_idt() {
     bzero((uint8_t *)&interrupt_handlers, sizeof(interrupt_handler_t) * 256);
+    
     idt_ptr.limit = sizeof(idt_entry_t) * 256 - 1;
     idt_ptr.base = (uint32_t)&idt_entries;
 
@@ -76,4 +77,8 @@ void isr_handler(pt_regs *regs) {
     } else {
         printk_color(rc_black, rc_blue, "Unhandled interrupt: %d\n", regs->int_no);
     }
+}
+
+void register_interrupt_handler(uint8_t n, interrupt_handler_t h) {
+    interrupt_handlers[n] = h;
 }

@@ -12,7 +12,7 @@ struct idt_entry_t {
     uint8_t always0;
     uint8_t flags;
     uint16_t base_hi;
-}__attribute__((packde)) idt_entry_t;
+}__attribute__((packed)) idt_entry_t;
 
 // IDTR
 typedef
@@ -29,10 +29,10 @@ struct pt_regs_t {
     uint32_t esi;
     uint32_t ebp;
     uint32_t esp;
-    uint32_t eax;
     uint32_t ebx;
-    uint32_t ecx;
     uint32_t edx;
+    uint32_t ecx;
+    uint32_t eax;
     uint32_t int_no;
     uint32_t err_code;
     uint32_t eip;

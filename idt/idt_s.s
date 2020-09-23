@@ -84,11 +84,11 @@ isr_common_stub:
     add esp, 4          ; clear pushed param
 
     pop ebx             ; recover ds
-    mov ds, ax
-    mov es, ax
-    mov fs, ax
-    mov gs, ax
-    mov ss, ax
+    mov ds, bx
+    mov es, bx
+    mov fs, bx
+    mov gs, bx
+    mov ss, bx          ; somehow jumps to isr13???
 
     popa                ; pops all
     add esp, 8          ; clear error code and ISR
