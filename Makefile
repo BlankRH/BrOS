@@ -59,7 +59,8 @@ umount_image:
 
 .PHONY:qemu
 qemu:
-	qemu -fda floppy.img -boot a
+	qemu -drive file=floppy.img,index=0,if=floppy,format=raw -boot a -d guest_errors
+#	qemu -fda floppy.img -boot a 
 
 .PHONY:bochs
 bochs:
@@ -67,7 +68,7 @@ bochs:
 
 .PHONY:debug
 debug:
-	qemu -S -s -fda floppy.img -boot a &
+	qemu -S -s -drive file=floppy.img,index=0,if=floppy,format=raw -boot a &
 	sleep 1
 	cgdb -x tools/gdbinit
 

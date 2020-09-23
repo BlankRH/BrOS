@@ -1,15 +1,14 @@
-#include "console.h"
-#include "debug.h"
+// #include "console.h"
+// #include "debug.h"
+#include "gdt.h"
 
 int kern_entry() {
 
-	init_debug();
+	// init_debug();
+	init_gdt();
 
-	console_clear();
-
-	printk_color(rc_black, rc_green, "Hello OS\n");
-
-	panic("test");
+	// console_clear();
+	// printk_color(rc_black, rc_green, "Hello, OS\n");
 
 	return 0;
 }
