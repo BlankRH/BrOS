@@ -17,7 +17,7 @@ void init_idt() {
 
     // re-map IRQ table
     // 2 Intel 8259A
-    // main chip port 0x20 0x21
+    // master chip port 0x20 0x21
     // the other 0xA0 0xA1
 
     //initialize chips
@@ -26,16 +26,16 @@ void init_idt() {
     outb(0x20, 0x11);
     outb(0xA0, 0x11);
 
-    // set main IRQ start from 0x20 interrupt
+    // set master IRQ start from 0x20 interrupt
     outb(0x21, 0x20);
 
-    // set follow IRQ start from 0x28
+    // set slave IRQ start from 0x28
     outb(0xA1, 0x28);
 
-    // set main IR2 connect follow
+    // set master IR2 connect slave
     outb(0x21, 0x04);
 
-    // tell follow output to connect with main chip IR2
+    // telt slave output to connect with master chip IR2
     outb(0xA1, 0x02);
 
     // set chips work as 8086
@@ -135,7 +135,7 @@ void irq_handler(pt_regs *regs) {
     if (regs->int_no >= 40) {
         outb(0xA0, 0x20);
     }
-    // send reset signal to main chip
+    // send reset signal to master chip
     outb(0x20, 0x20);
     
     if (interrupt_handlers[regs->int_no]) {
